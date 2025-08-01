@@ -1,4 +1,5 @@
 Mini Project Manager
+
 A full-stack project management web application built with React + TypeScript on the frontend and ASP.NET Core 8 + Entity Framework Core on the backend.
 
 Live Demo
