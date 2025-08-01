@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 // Type definitions for project and task entities
 type Project = {
@@ -132,7 +133,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch("/api/projects", {
+      const res = await fetch(`${apiUrl}/api/projects`, {
         headers: { Authorization: "Bearer " + token },
       });
       if (!res.ok) throw new Error("Failed to fetch projects");
@@ -151,7 +152,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch(`/api/projects/${projectId}/tasks`, {
+      const res = await fetch(`${apiUrl}/api/projects/${projectId}/tasks`, {
         headers: { Authorization: "Bearer " + token },
       });
       if (!res.ok) throw new Error("Failed to fetch tasks");
@@ -206,7 +207,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch("/api/projects", {
+      const res = await fetch(`${apiUrl}/api/projects`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -248,7 +249,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch(`/api/projects/${projectToDelete}`, {
+      const res = await fetch(`${apiUrl}/api/projects/${projectToDelete}`, {
         method: "DELETE",
         headers: { Authorization: "Bearer " + token },
       });
@@ -278,7 +279,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch(`/api/projects/${projectId}/tasks`, {
+      const res = await fetch(`${apiUrl}/api/projects/${projectId}/tasks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -320,7 +321,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch(`/api/tasks/${task.id}`, {
+      const res = await fetch(`${apiUrl}/api/tasks/${task.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -355,7 +356,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch(`/api/tasks/${task.id}`, {
+      const res = await fetch(`${apiUrl}/api/tasks/${task.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -389,7 +390,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
     try {
       const token = sessionStorage.getItem("token");
       if (!token) throw new Error("Not authenticated");
-      const res = await fetch(`/api/tasks/${taskId}`, {
+      const res = await fetch(`${apiUrl}/api/tasks/${taskId}`, {
         method: "DELETE",
         headers: { Authorization: "Bearer " + token },
       });
