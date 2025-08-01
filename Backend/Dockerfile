@@ -8,4 +8,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/out .
 EXPOSE 10000
-ENTRYPOINT ["dotnet", "Project_Manager_Api.dll", "--urls", "http://0.0.0.0:10000"]
+ENTRYPOINT ["dotnet", "Project-Manager-Api.dll", "--urls", "http://0.0.0.0:10000"]
