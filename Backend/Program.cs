@@ -94,6 +94,11 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
     });
 
     var app = builder.Build();
+    using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); // This will apply any pending migrations to the database
+}
 
     if (app.Environment.IsDevelopment())
     {
