@@ -37,7 +37,8 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
     builder.Services.AddControllers();// Add services to the container for controllers
 
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlite("Data Source=project_manager.db"));// Configure SQLite database context
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Configure Entity Framework Core to use SQLite with the connection string from appsettings.json
 
     builder.Services.AddEndpointsApiExplorer();//for Swagger
     builder.Services.AddSwaggerGen(c =>
