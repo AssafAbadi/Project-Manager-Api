@@ -4,7 +4,7 @@ namespace Project_Manager_Api.DTOs
 {
     public class TaskCreateDto
     {
-        [Required, StringLength(100, MinimumLength = 3)]
+        [Required]
         public string? Title { get; set; }//no required as it can be null if we get a bad request and then we validate it using DataAnnotations
 
         public DateTime? DueDate { get; set; }  
