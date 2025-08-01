@@ -20,7 +20,7 @@ const spinnerDot = {
   animation: "spin 0.7s linear infinite",
 };
 
-const LoginPage: React.FC<LoginPageProps> = ({ onLogin = () => {} }) => {
+const LoginPage: React.FC<LoginPageProps> = ({ onLogin = () => { } }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

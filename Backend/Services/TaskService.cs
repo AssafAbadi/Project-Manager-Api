@@ -121,11 +121,11 @@ namespace Project_Manager_Api.Services
         }
 
 
-            public IQueryable<TaskItem> GetQueryableTasks(int projectId, int userId)//its not async because the controller use tolistAsync() method after the filter ans sort
-            {
-                return _context.Tasks
-                     .Where(t => t.ProjectId == projectId && t.Project != null && t.Project.UserId == userId);
-         }
+        public IQueryable<TaskItem> GetQueryableTasks(int projectId, int userId)//its not async because the controller use tolistAsync() method after the filter ans sort
+        {
+            return _context.Tasks
+                 .Where(t => t.ProjectId == projectId && t.Project != null && t.Project.UserId == userId);
+        }
 
     }
 }

@@ -17,15 +17,15 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
 {
     options.AddDefaultPolicy(policy =>
     {
-                policy.WithOrigins(
-                "http://localhost:3000",
-                "https://project-manager-api-beryl.vercel.app",
-                "https://project-manager-api-assaf-abadis-projects.vercel.app",
-                "https://project-manager-api-git-main-assaf-abadis-projects.vercel.app",
-                "https://project-manager-u3bhq00pe-assaf-abadis-projects.vercel.app"
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+        policy.WithOrigins(
+        "http://localhost:3000",
+        "https://project-manager-api-beryl.vercel.app",
+        "https://project-manager-api-assaf-abadis-projects.vercel.app",
+        "https://project-manager-api-git-main-assaf-abadis-projects.vercel.app",
+        "https://project-manager-u3bhq00pe-assaf-abadis-projects.vercel.app"
+    )
+    .AllowAnyHeader()
+    .AllowAnyMethod();
     });
 });// Configure CORS to allow requests from the frontend (React app) running on localhost:3000
 
@@ -38,7 +38,7 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
 
     builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-// Configure Entity Framework Core to use SQLite with the connection string from appsettings.json
+    // Configure Entity Framework Core to use SQLite with the connection string from appsettings.json
 
     builder.Services.AddEndpointsApiExplorer();//for Swagger
     builder.Services.AddSwaggerGen(c =>
@@ -96,10 +96,10 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
 
     var app = builder.Build();
     using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate(); // This will apply any pending migrations to the database
-}
+    {
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        db.Database.Migrate(); // This will apply any pending migrations to the database
+    }
 
     if (app.Environment.IsDevelopment())
     {

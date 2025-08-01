@@ -40,7 +40,7 @@ const RegisterPage: React.FC = () => {
         const errData = await res.json();
         throw new Error(
           errData.error ||
-            "Registration failed. Username must be 3-20 characters. Password at least 6 characters."
+          "Registration failed. Username must be 3-20 characters. Password at least 6 characters."
         );
       }
 

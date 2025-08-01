@@ -20,27 +20,27 @@ type Task = {
 // SVG icon components for visual style
 const LogoutIcon = () => (
   <svg height="18" width="18" fill="none" viewBox="0 0 24 24">
-    <path d="M16 17l5-5-5-5" stroke="#007aff" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M21 12H9" stroke="#007aff" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M12 19a7 7 0 110-14" stroke="#007aff" strokeWidth="2"/>
+    <path d="M16 17l5-5-5-5" stroke="#007aff" strokeWidth="2" strokeLinecap="round" />
+    <path d="M21 12H9" stroke="#007aff" strokeWidth="2" strokeLinecap="round" />
+    <path d="M12 19a7 7 0 110-14" stroke="#007aff" strokeWidth="2" />
   </svg>
 );
 const TrashIcon = () => (
   <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
-    <rect x="4" y="7" width="16" height="12" rx="3" stroke="#ef4444" strokeWidth="2"/>
-    <path d="M10 11v4M14 11v4M5 7h14" stroke="#ef4444" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7" stroke="#ef4444" strokeWidth="2"/>
+    <rect x="4" y="7" width="16" height="12" rx="3" stroke="#ef4444" strokeWidth="2" />
+    <path d="M10 11v4M14 11v4M5 7h14" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" />
+    <path d="M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7" stroke="#ef4444" strokeWidth="2" />
   </svg>
 );
 const AddIcon = () => (
   <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="10" stroke="#0ea5e9" strokeWidth="2"/>
-    <path d="M12 8v8M8 12h8" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="12" cy="12" r="10" stroke="#0ea5e9" strokeWidth="2" />
+    <path d="M12 8v8M8 12h8" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" />
   </svg>
 );
 const EditIcon = () => (
   <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
-    <path d="M16.5 4.5l3 3L7 20.5H4v-3L16.5 4.5z" stroke="#6366f1" strokeWidth="2"/>
+    <path d="M16.5 4.5l3 3L7 20.5H4v-3L16.5 4.5z" stroke="#6366f1" strokeWidth="2" />
   </svg>
 );
 
@@ -118,7 +118,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
 
   const navigate = useNavigate();
 
- 
+
 
   // Effect: fetch projects on mount
   useEffect(() => {
@@ -415,9 +415,9 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
 
   // Logout logic
   function handleLogout() {
-  if (onLogout) onLogout();
-  navigate("/");
-}
+    if (onLogout) onLogout();
+    navigate("/");
+  }
 
 
   // Get filtered and sorted tasks for a project
@@ -529,30 +529,30 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
             marginBottom: 30,
           }}
         >
-        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
             <label style={{ fontWeight: 500, marginBottom: 4 }}>
-                Project Title <span style={{ color: "red" }}>*</span>
-            </label> 
-          <input
-            type="text"
-            placeholder="Project Title (3–100 chars)"
-            value={newProjectTitle}
-            onChange={e => setNewProjectTitle(e.target.value)}
-            required
-            minLength={3}
-            maxLength={100}
-            style={{
-              fontSize: 17,
-              padding: "10px 14px",
-              border: "1px solid #d1d5db",
-              borderRadius: 13,
-              outline: "none",
-              background: "#f6faff",
-              width: window.innerWidth < 700 ? "100%" : 240,
-              flex: 1,
-              marginBottom: window.innerWidth < 700 ? 8 : 0,
-            }}
-          />
+              Project Title <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Project Title (3–100 chars)"
+              value={newProjectTitle}
+              onChange={e => setNewProjectTitle(e.target.value)}
+              required
+              minLength={3}
+              maxLength={100}
+              style={{
+                fontSize: 17,
+                padding: "10px 14px",
+                border: "1px solid #d1d5db",
+                borderRadius: 13,
+                outline: "none",
+                background: "#f6faff",
+                width: window.innerWidth < 700 ? "100%" : 240,
+                flex: 1,
+                marginBottom: window.innerWidth < 700 ? 8 : 0,
+              }}
+            />
           </div>
           <textarea
             placeholder="Description (optional, up to 500 chars)"
@@ -751,25 +751,25 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                         gap: 7,
                       }}
                     >
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <div style={{ display: "flex", flexDirection: "column" }}>
                         <label style={{ fontWeight: 500, marginBottom: 4 }}>
-                            Task Title <span style={{ color: "red" }}>*</span>
+                          Task Title <span style={{ color: "red" }}>*</span>
                         </label>
-                      <input
-                        type="text"
-                        placeholder="Task title (required)"
-                        value={newTaskTitle}
-                        onChange={e => setNewTaskTitle(e.target.value)}
-                        required
-                        maxLength={100}
-                        style={{
-                          padding: "6px 10px",
-                          borderRadius: 10,
-                          border: "1px solid #d1d5db",
-                          fontSize: 15,
-                          width: window.innerWidth < 700 ? 170 : 190,
-                        }}
-                      />
+                        <input
+                          type="text"
+                          placeholder="Task title (required)"
+                          value={newTaskTitle}
+                          onChange={e => setNewTaskTitle(e.target.value)}
+                          required
+                          maxLength={100}
+                          style={{
+                            padding: "6px 10px",
+                            borderRadius: 10,
+                            border: "1px solid #d1d5db",
+                            fontSize: 15,
+                            width: window.innerWidth < 700 ? 170 : 190,
+                          }}
+                        />
                       </div>
 
                       <input
@@ -874,21 +874,21 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
                                   }}
                                 />
                                 <button
-                                    style={{
-                                        marginRight: 4,
-                                        border: "none",
-                                        background: "#007aff",
-                                        color: "#fff",
-                                        borderRadius: 7,
-                                        fontWeight: 600,
-                                        padding: "4px 16px",
-                                        fontSize: 15,
-                                        cursor: "pointer",
-                                    }}
-                                    onClick={() => saveEditTask(p.id, task)}
-                                    >
-                                    Save
-                                    </button>
+                                  style={{
+                                    marginRight: 4,
+                                    border: "none",
+                                    background: "#007aff",
+                                    color: "#fff",
+                                    borderRadius: 7,
+                                    fontWeight: 600,
+                                    padding: "4px 16px",
+                                    fontSize: 15,
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={() => saveEditTask(p.id, task)}
+                                >
+                                  Save
+                                </button>
                                 <button
                                   style={{
                                     background: "#eee",

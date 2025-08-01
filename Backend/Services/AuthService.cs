@@ -52,37 +52,37 @@ namespace Project_Manager_Api.Services
             {
                 throw new ApplicationException("An error occurred while saving changes to the database.");
             }
-            
-            
+
+
         }
         /// <summary>
         /// Logs in a user with the provided login details and returns a JWT token if successful.
         /// <param name="dto">The login details.</param>
         /// <returns>A task that represents the asynchronous operation, containing the JWT token.</returns>
-        
-       public async Task<string> LoginAsync(LoginDto dto)
-{
-    try
-    {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == dto.Username);
 
-        if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
-            throw new ApplicationException("Invalid credentials.");
+        public async Task<string> LoginAsync(LoginDto dto)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == dto.Username);
 
-        return GenerateJwtToken(user);
-    }
-    catch (ArgumentNullException ex)
-    {
-       
-        throw new ApplicationException("Failed to login due to missing input.", ex);
-    }
-    catch (OperationCanceledException ex)
-    {
-        
-        throw new ApplicationException("Login was canceled. Please try again.", ex);
-    }
-   
-}
+                if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+                    throw new ApplicationException("Invalid credentials.");
+
+                return GenerateJwtToken(user);
+            }
+            catch (ArgumentNullException ex)
+            {
+
+                throw new ApplicationException("Failed to login due to missing input.", ex);
+            }
+            catch (OperationCanceledException ex)
+            {
+
+                throw new ApplicationException("Login was canceled. Please try again.", ex);
+            }
+
+        }
 
 
         private string GenerateJwtToken(User user)
@@ -112,9 +112,9 @@ namespace Project_Manager_Api.Services
             {
                 throw new ApplicationException("An error occurred while generating the token.");
             }
-  
 
-            
+
+
         }
     }
 }

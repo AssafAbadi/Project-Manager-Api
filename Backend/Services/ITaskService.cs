@@ -1,5 +1,5 @@
 using Project_Manager_Api.DTOs;
-using Project_Manager_Api.Models; 
+using Project_Manager_Api.Models;
 
 namespace Project_Manager_Api.Services
 {

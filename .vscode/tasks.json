@@ -1,26 +1,29 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Run Backend",
-      "type": "shell",
-      "command": "dotnet run",
-      "options": {
-        "cwd": "${workspaceFolder}/Backend"
-      }
-    },
-    {
-      "label": "Run Frontend",
-      "type": "shell",
-      "command": "npm start",
-      "options": {
-        "cwd": "${workspaceFolder}/mini-project-manager-frontend"
-      }
-    },
-    {
-      "label": "Run Both",
-      "dependsOn": ["Run Backend", "Run Frontend"],
-      "dependsOrder": "parallel"
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Backend",
+            "type": "shell",
+            "command": "dotnet run",
+            "options": {
+                "cwd": "${workspaceFolder}/Backend"
+            }
+        },
+        {
+            "label": "Run Frontend",
+            "type": "shell",
+            "command": "npm start",
+            "options": {
+                "cwd": "${workspaceFolder}/mini-project-manager-frontend"
+            }
+        },
+        {
+            "label": "Run Both",
+            "dependsOn": [
+                "Run Backend",
+                "Run Frontend"
+            ],
+            "dependsOrder": "parallel"
+        }
+    ]
 }

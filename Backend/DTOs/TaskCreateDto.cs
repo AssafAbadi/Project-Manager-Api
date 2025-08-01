@@ -7,7 +7,7 @@ namespace Project_Manager_Api.DTOs
         [Required]
         public string? Title { get; set; }//no required as it can be null if we get a bad request and then we validate it using DataAnnotations
 
-        public DateTime? DueDate { get; set; }  
+        public DateTime? DueDate { get; set; }
 
 
         [Required]
