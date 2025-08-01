@@ -81,11 +81,7 @@ namespace Project_Manager_Api.Services
         
         throw new ApplicationException("Login was canceled. Please try again.", ex);
     }
-    // catch (Exception ex) i decided i dont need a general one 
-    // {
-       
-    //     throw new ApplicationException("An unexpected error occurred during login.", ex);
-    // }
+   
 }
 
 
