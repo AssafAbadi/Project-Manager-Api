@@ -117,6 +117,7 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const username = sessionStorage.getItem("username") || "User";
 
 
 
@@ -481,6 +482,15 @@ const Dashboard: React.FC<{ onLogout?: () => void }> = ({ onLogout }) => {
         >
           Projects Dashboard
         </h2>
+        <span style={{
+          fontWeight: 700,
+          fontSize: 16,
+          color: "#007aff",
+          marginLeft: 12,
+          alignSelf: "center"
+        }}>
+          Hello, {username}
+        </span>
         <button
           style={{
             background: "#fff",

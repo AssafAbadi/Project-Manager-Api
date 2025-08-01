@@ -11,6 +11,7 @@ function App() {
   // Handle logout from Dashboard
   function handleLogout() {
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("username");
     setIsAuthenticated(false);
   }
 

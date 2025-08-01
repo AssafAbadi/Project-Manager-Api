@@ -42,6 +42,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin = () => { } }) => {
       const data = await res.json();
 
       sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("username", username);
 
       onLogin();
       navigate("/dashboard");
