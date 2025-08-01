@@ -17,9 +17,12 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+                policy.WithOrigins(
+                "http://localhost:3000",
+                "https://project-manager-api-beryl.vercel.app"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });// Configure CORS to allow requests from the frontend (React app) running on localhost:3000
 
