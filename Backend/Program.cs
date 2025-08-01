@@ -66,7 +66,7 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            new string[] {}// No scopes required for this API
         }
     });
 });
@@ -119,7 +119,7 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
 catch (Exception ex)
 {
     // Catch-all for fatal errors during app startup (DB/config issues)
-    // In production, you would use a proper logger.
+    // In production, we would use a proper logger.
     Console.Error.WriteLine("Fatal error during startup: " + ex.Message);
     Console.Error.WriteLine(ex.ToString());
     throw; // Crash the process to signal configuration or infrastructure issues.
