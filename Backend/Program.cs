@@ -19,7 +19,10 @@ try // Wrapping Program.cs in a global try/catch ensures that any critical confi
     {
                 policy.WithOrigins(
                 "http://localhost:3000",
-                "https://project-manager-api-beryl.vercel.app"
+                "https://project-manager-api-beryl.vercel.app",
+                "https://project-manager-api-assaf-abadis-projects.vercel.app",
+                "https://project-manager-api-git-main-assaf-abadis-projects.vercel.app",
+                "https://project-manager-u3bhq00pe-assaf-abadis-projects.vercel.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
