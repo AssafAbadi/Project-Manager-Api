@@ -1,17 +1,34 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const spinnerStyle = {
+  display: "flex",
+  justifyContent: "center",
+  marginTop: 10,
+};
+
+const spinnerDot = {
+  border: "4px solid #f3f3f3",
+  borderTop: "4px solid #3498db",
+  borderRadius: "50%",
+  width: 32,
+  height: 32,
+  animation: "spin 0.7s linear infinite",
+};
+
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false); // loading state
   const navigate = useNavigate();
 
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
     setError("");
     setSuccess("");
+    setLoading(true); // Start spinner
     try {
       const res = await fetch(process.env.REACT_APP_API_URL + "/api/auth/register", {
         method: "POST",
@@ -21,15 +38,22 @@ const RegisterPage: React.FC = () => {
 
       if (!res.ok) {
         const errData = await res.json();
-        throw new Error(errData.error || "Registration failed. Username must be 3-20 characters. Password at least 6 characters.");
+        throw new Error(
+          errData.error ||
+            "Registration failed. Username must be 3-20 characters. Password at least 6 characters."
+        );
       }
 
       setSuccess("Registration successful! Redirecting to login...");
       setUsername("");
       setPassword("");
-      setTimeout(() => { navigate("/"); }, 1500);
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     } catch (err: any) {
       setError(err.message || "Registration failed. Try again.");
+    } finally {
+      setLoading(false); // Stop spinner
     }
   }
 
@@ -43,6 +67,14 @@ const RegisterPage: React.FC = () => {
         justifyContent: "center",
       }}
     >
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+          }
+        `}
+      </style>
       <form
         onSubmit={handleRegister}
         style={{
@@ -56,7 +88,17 @@ const RegisterPage: React.FC = () => {
           gap: 19,
         }}
       >
-        <h2 style={{ textAlign: "center", fontSize: 28, fontWeight: 700, margin: 0, color: "#26395a" }}>Register</h2>
+        <h2
+          style={{
+            textAlign: "center",
+            fontSize: 28,
+            fontWeight: 700,
+            margin: 0,
+            color: "#26395a",
+          }}
+        >
+          Register
+        </h2>
         <input
           type="text"
           placeholder="Username (3–100 characters)"
@@ -91,6 +133,7 @@ const RegisterPage: React.FC = () => {
         />
         <button
           type="submit"
+          disabled={loading}
           style={{
             background: "linear-gradient(95deg,#68c4fa 0%,#007aff 90%)",
             color: "#fff",
@@ -102,10 +145,16 @@ const RegisterPage: React.FC = () => {
             cursor: "pointer",
             boxShadow: "0 3px 14px 0 rgba(0,122,255,0.09)",
             transition: "background 0.2s, box-shadow 0.15s, transform 0.12s",
+            opacity: loading ? 0.7 : 1,
           }}
         >
-          Register
+          {loading ? "Registering..." : "Register"}
         </button>
+        {loading && (
+          <div style={spinnerStyle}>
+            <div style={spinnerDot} />
+          </div>
+        )}
         {success && (
           <div
             style={{
